@@ -12,8 +12,17 @@ config_version=5
 
 config/name="SnakeProject"
 run/main_scene="uid://bv48wmlkam8c5"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/GameScripts/game_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
 
 [rendering]
 
