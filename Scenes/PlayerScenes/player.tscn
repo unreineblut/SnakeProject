@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://c72d0lv5d0yhq"]
+[gd_scene load_steps=3 format=3 uid="uid://c72d0lv5d0yhq"]
 
-[node name="Player" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cp2e64ktjqmce" path="res://Assets/Sprites/Sprite-0001.png" id="1_vn1c7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn1c7"]
+radius = 4.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Head" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+texture_filter = 1
+texture = ExtResource("1_vn1c7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource("CircleShape2D_vn1c7")
