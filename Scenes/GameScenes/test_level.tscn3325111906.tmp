@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bv48wmlkam8c5"]
+[gd_scene load_steps=9 format=4 uid="uid://bv48wmlkam8c5"]
 
 [ext_resource type="PackedScene" uid="uid://c72d0lv5d0yhq" path="res://Scenes/PlayerScenes/player.tscn" id="1_4gnvc"]
 [ext_resource type="Texture2D" uid="uid://c03nlgbbvkojf" path="res://Assets/Sprites/Snake.png" id="2_40hlc"]
@@ -19,9 +19,6 @@ texture = ExtResource("3_nfqph")
 sources/0 = SubResource("TileSetAtlasSource_hqlcu")
 sources/1 = SubResource("TileSetAtlasSource_5m1lu")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hqlcu"]
-radius = 7.0
-
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -38,9 +35,3 @@ script = ExtResource("4_hqlcu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Comida"]
 texture = ExtResource("5_5m1lu")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Comida"]
-shape = SubResource("CircleShape2D_hqlcu")
-
-[connection signal="body_entered" from="Comida" to="Comida" method="_on_Comida_body_entered"]
