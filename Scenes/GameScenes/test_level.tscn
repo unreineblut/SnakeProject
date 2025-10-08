@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c03nlgbbvkojf" path="res://Assets/Sprites/Snake.png" id="2_40hlc"]
 [ext_resource type="Texture2D" uid="uid://cxtc4wit7un61" path="res://Assets/Sprites/wall.png" id="3_nfqph"]
 [ext_resource type="Script" uid="uid://uh3h55ldd5ws" path="res://Scenes/GameScenes/comida.gd" id="4_hqlcu"]
-[ext_resource type="Texture2D" uid="uid://6m8fgu1p4gqb" path="res://Assets/Sprites/AppleSprite.png" id="5_5m1lu"]
+[ext_resource type="Texture2D" uid="uid://pvcsl0tuaaap" path="res://Assets/Sprites/Fruit.png" id="5_hqlcu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqlcu"]
 texture = ExtResource("2_40hlc")
@@ -14,8 +14,10 @@ texture_region_size = Vector2i(70, 70)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5m1lu"]
 texture = ExtResource("3_nfqph")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_glstb"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hqlcu")
 sources/1 = SubResource("TileSetAtlasSource_5m1lu")
 
@@ -29,18 +31,21 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQAAAAAAAAAPAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAA0AAQAAAAAAAAAAAA4AAQAAAAAAAAAAAA8AAQAAAAAAAAAAABAAAQAAAAAAAAAAABEAAQAAAAAAAAABABEAAQAAAAAAAAACABEAAQAAAAAAAAADABEAAQAAAAAAAAAEABEAAQAAAAAAAAAFABEAAQAAAAAAAAAGABEAAQAAAAAAAAAHABEAAQAAAAAAAAAIABEAAQAAAAAAAAAJABEAAQAAAAAAAAAKABEAAQAAAAAAAAALABEAAQAAAAAAAAAMABEAAQAAAAAAAAANABEAAQAAAAAAAAAOABEAAQAAAAAAAAAPABEAAQAAAAAAAAAQABEAAQAAAAAAAAARABEAAQAAAAAAAAASABEAAQAAAAAAAAATABEAAQAAAAAAAAAUABEAAQAAAAAAAAAVABEAAQAAAAAAAAAWABEAAQAAAAAAAAAXABEAAQAAAAAAAAAYABEAAQAAAAAAAAAZABEAAQAAAAAAAAAaABEAAQAAAAAAAAAbABEAAQAAAAAAAAAcABEAAQAAAAAAAAAdABEAAQAAAAAAAAAeABEAAQAAAAAAAAAfABEAAQAAAAAAAAAfAAAAAQAAAAAAAAAfAAEAAQAAAAAAAAAfAAIAAQAAAAAAAAAfAAMAAQAAAAAAAAAfAAQAAQAAAAAAAAAfAAUAAQAAAAAAAAAfAAYAAQAAAAAAAAAfAAcAAQAAAAAAAAAfAAgAAQAAAAAAAAAfAAkAAQAAAAAAAAAfAAoAAQAAAAAAAAAfAAsAAQAAAAAAAAAfAAwAAQAAAAAAAAAfAA0AAQAAAAAAAAAfAA4AAQAAAAAAAAAfAA8AAQAAAAAAAAAfABAAAQAAAAAAAAAeAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAATAAAAAQAAAAAAAAASAAAAAQAAAAAAAAARAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_glstb")
 
-[node name="Player" parent="." instance=ExtResource("1_4gnvc")]
-position = Vector2(504, 328)
-
 [node name="Comida" type="Area2D" parent="."]
+texture_filter = 1
 position = Vector2(198, 112)
 script = ExtResource("4_hqlcu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Comida"]
-texture = ExtResource("5_5m1lu")
+position = Vector2(-6, -8)
+texture = ExtResource("5_hqlcu")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Comida"]
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_hqlcu")
+
+[node name="Player" parent="." instance=ExtResource("1_4gnvc")]
+position = Vector2(504, 328)
 
 [connection signal="body_entered" from="Comida" to="Comida" method="_on_Comida_body_entered"]

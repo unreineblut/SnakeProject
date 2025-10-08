@@ -1,17 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c72d0lv5d0yhq"]
+[gd_scene load_steps=4 format=3 uid="uid://c72d0lv5d0yhq"]
 
-[ext_resource type="Texture2D" uid="uid://cp2e64ktjqmce" path="res://Assets/Sprites/Sprite-0001.png" id="1_vn1c7"]
+[ext_resource type="Script" uid="uid://qat3xqhx370b" path="res://Scripts/PlayerScripts/player.gd" id="1_44dyf"]
+[ext_resource type="Texture2D" uid="uid://cluhiinwrtuna" path="res://Assets/Sprites/Segment.png" id="2_44dyf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn1c7"]
 radius = 4.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_44dyf")
 
-[node name="Head" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Head"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_vn1c7")
+texture = ExtResource("2_44dyf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+[node name="HeadCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vn1c7")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.2

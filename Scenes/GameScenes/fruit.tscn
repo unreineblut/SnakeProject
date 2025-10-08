@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://mypu2yn4dflg"]
+[gd_scene load_steps=4 format=3 uid="uid://mypu2yn4dflg"]
 
-[node name="Fruit" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://c03nlgbbvkojf" path="res://Assets/Sprites/Snake.png" id="1_oojqt"]
+[ext_resource type="Script" uid="uid://b2bwmkp7awhb0" path="res://Scenes/GameScenes/fruit.gd" id="1_v7rxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7rxd"]
+size = Vector2(16, 16)
+
+[node name="Fruit" type="Area2D"]
+script = ExtResource("1_v7rxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v7rxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_oojqt")
+region_enabled = true
+region_rect = Rect2(93.83204, 611.1056, 141.98831, 142.31989)
