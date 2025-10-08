@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://bv48wmlkam8c5"]
+[gd_scene load_steps=9 format=4 uid="uid://bv48wmlkam8c5"]
+
 [ext_resource type="PackedScene" uid="uid://c72d0lv5d0yhq" path="res://Scenes/PlayerScenes/player.tscn" id="1_4gnvc"]
-[ext_resource type="Script" uid="uid://i1maqrcsx318" path="res://Scenes/GameScenes/test_level.gd" id="1_nfqph"]
 [ext_resource type="Texture2D" uid="uid://c03nlgbbvkojf" path="res://Assets/Sprites/Snake.png" id="2_40hlc"]
-[ext_resource type="PackedScene" uid="uid://mypu2yn4dflg" path="res://Scenes/GameScenes/fruit.tscn" id="2_hqlcu"]
 [ext_resource type="Texture2D" uid="uid://cxtc4wit7un61" path="res://Assets/Sprites/wall.png" id="3_nfqph"]
 [ext_resource type="Script" uid="uid://uh3h55ldd5ws" path="res://Scenes/GameScenes/comida.gd" id="4_hqlcu"]
 [ext_resource type="Texture2D" uid="uid://6m8fgu1p4gqb" path="res://Assets/Sprites/AppleSprite.png" id="5_5m1lu"]
@@ -15,19 +14,12 @@ texture_region_size = Vector2i(70, 70)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5m1lu"]
 texture = ExtResource("3_nfqph")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_glstb"]
-physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hqlcu")
 sources/1 = SubResource("TileSetAtlasSource_5m1lu")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hqlcu"]
-radius = 7.0
-
 [node name="TestLevel" type="Node2D"]
-script = ExtResource("1_nfqph")
-food_scene = ExtResource("2_hqlcu")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -43,9 +35,3 @@ script = ExtResource("4_hqlcu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Comida"]
 texture = ExtResource("5_5m1lu")
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Comida"]
-shape = SubResource("CircleShape2D_hqlcu")
-
-[connection signal="body_entered" from="Comida" to="Comida" method="_on_Comida_body_entered"]
